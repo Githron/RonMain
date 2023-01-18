@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hide/show on scroll</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                padding-bottom: 1000px;
+            }
+
+            #nav {
+                width: 100vw;
+                height: 500px;
+                background-color: tomato;
+                transition: all 1s ease-in-out;
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes fadeOut {
+                0% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="nav"></div>
+
+        <script>
+            //NavBar Menu visible when scrollUp else hidden
+            let nav = document.getElementById("nav");
+            let previousScroll = window.pageYOffset;
+
+            window.addEventListener("scroll", () => {
+                // Get the current scroll position
+                const currentScroll = window.pageYOffset;
+
+                // Check if the user is scrolling up
+                if (currentScroll < previousScroll) {
+                    nav.style.display = "block";
+                    nav.style.animation = "fadeIn .8s ease-in-out forwards";
+                } else {
+                    setTimeout(function () {
+                        nav.style.display = "none"; 
+                    }, 20);
+                }
+
+                // Update the previous scroll position
+                previousScroll = currentScroll;
+            });
+            //end
+
+
+
+            
+        </script>
+    </body>
+</html>

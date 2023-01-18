@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Js codes</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+        />
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .buttonHamMenu {
+                cursor: pointer;
+                width: 50px;
+                height: 50px;
+                background-color: #0d8cf1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .ri-menu-line {
+                font-size: 2rem;
+                margin: 0 auto;
+            }
+            #sideMenu {
+                position: fixed;
+                transition: all 1s ease-out;
+                transform: translateX(-100%);
+                visibility: hidden;
+                opacity: 0;
+                width: 300px;
+                height: 100vh;
+                background-color: #0d8cf1;
+            }
+            #sideMenu.open{
+                opacity: 1;
+                transform: translateX(0);
+                visibility: visible;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div onclick="toggle()" class="buttonHamMenu">
+            <i class="ri-menu-line"></i>
+        </div>
+        <div id="sideMenu"></div>
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            // toggle button always set onclick="toggle()" on element
+            function toggle() {
+                var sideMenu = document.getElementById("sideMenu");
+                sideMenu.classList.toggle("open");
+                // sideMenu.style.transition = "opacity 3s" // dont forget this
+                // if (sideMenu.style.opacity == 0) {
+                //     sideMenu.style.display = "flex";
+                //     sideMenu.style.opacity = 0;
+                //     setTimeout(function () {
+                //         sideMenu.style.opacity = 0.95;
+                //     }, 10);
+                // } else {
+                //     setTimeout(function () {
+                //         sideMenu.style.display = "none";
+                //     }, 1000); //timeOut before display none
+                //     sideMenu.style.opacity = 0;
+                // }
+            } //end
+
+            // click event listener = change css style
+            // $(".hamMenu").click(function () {
+            //     $(".hamMenu").css("background-color", "red");
+            // });
+
+            // // change css property
+            // $(document).ready(function () {
+            //     $(".div1").mouseenter(function () {
+            //         $(".div2").css("background-color", "red");
+            //     });
+
+            //     $(".div1").mouseout(function () {
+            //         $(".div2").css("background-color", "rgb(226, 80, 43)");
+            //     });
+            // });
+        </script>
+    </body>
+</html>

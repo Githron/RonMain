@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                border: 1px solid gray;
+            }
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80vw;
+                height: 50vh;
+                margin: auto;
+            }
+
+            p{
+                height: 50px;
+                text-align: center;
+            }
+
+            #slideoutX {
+                width: 50%;
+                background-color: #E56337;
+                margin: auto;
+
+            /* Animation Css start */
+                transition: all 1s ease-out;
+                transform: translateY(-100%);
+                visibility: hidden;
+                opacity: 0;
+            }
+            #slideoutX.open {
+                opacity: 1;
+                transform: translateY(0);
+                visibility: visible;
+            }
+            /* animation css end */
+        </style>
+
+
+        <body onclick="toggle()">
+            <div>
+                <p id="slideoutX"> This is the content of the slide-out div.</p>
+            </div>
+        </body>
+
+        <script>
+            // const button = document.getElementById("show-button");
+            // const slideout = document.getElementById("slideout");
+    
+            // button.addEventListener("click", () => {
+            //     slideout.classList.toggle("open");
+            // });
+
+            // or below, Same output
+
+
+            //animation is set in css style
+            function toggle() {
+                // var element = document.getElementById("slideout");
+                slideoutX.classList.toggle("open"); // no need to set var to classlist
+            }    
+
+
+        </script>
+        
+</html>

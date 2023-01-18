@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Slide in/out added display none</title>
+
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                border: 1px solid gray;
+            }
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80vw;
+                height: 50vh;
+                margin: auto;
+            }
+
+            p{
+                height: 50px;
+                text-align: center;
+            }
+
+            #slideoutX {
+                width: 50%;
+                background-color: #E56337;
+                margin: auto;
+
+            /* Animation Css start */
+                transition: all 1s ease-out;
+                transform: translateY(-100%);
+                visibility: hidden;
+                opacity: 0;
+                display: none;
+            }
+            #slideoutX.open {
+                opacity: 1;
+                transform: translateY(0);
+                visibility: visible;
+                display: block;
+            }
+            /* animation css end */
+        </style>
+
+
+        <body class="click">
+            <div style="background-color: violet; border: none;">
+                <p id="slideoutX"> This is the content of the slide-out div.</p>
+            </div>
+        </body>
+
+        <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+        <script>
+            //jQuery slide in/out up/down
+            $(document).ready(function () {
+                $(".click").click(function () {
+                    if ($("#slideoutX").hasClass("open"))
+                    {
+                        $("#slideoutX").css("opacity", "0");
+                        $("#slideoutX").removeClass("open");
+                    setTimeout(function () {
+                        $("#slideoutX").css("display", "none");
+                    }, 1000);
+                    } else {
+                        $("#slideoutX").css("display", "block");
+                        $("#slideoutX").animate({
+                            opacity: 1
+                        }, 1000, 'linear');
+                        $("#slideoutX").addClass("open");
+                    }
+                });
+            });
+        </script>
+        
+        
+</html>

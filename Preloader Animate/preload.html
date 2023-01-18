@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Preloader Animate</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                background-color: black;
+                padding-bottom: 700px;
+            }
+            #myGif {
+                width: 100%;
+                position: fixed;
+                opacity: 0.5;
+            }
+
+
+            /* animation starts here */
+            #preloader {
+                animation: fadeOut 1s ease-in-out;
+                animation-fill-mode: forwards;
+                animation-play-state: paused;
+            }
+
+            @keyframes fadeOut {
+                0% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+
+            .fadeAllWrapper {
+                animation: fadeIn 1s ease-in-out;
+                animation-fill-mode: forwards;
+                animation-play-state: paused;
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            .content {
+                color: white;
+                animation: contex ease-in-out;
+                animation-play-state: paused;
+            }
+
+            @keyframes contex {
+                0% {
+                    opacity: 0;
+                    transform: translateX(-100%);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            /* ends here */
+        </style>
+    </head>
+
+    <body>
+        <div id="preloader">
+            <img id="myGif" src="preloader.gif" alt="" />
+        </div>
+
+        <div class="fadeAllWrapper">
+            <div class="content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Perspiciatis hic, tenetur iusto eos deserunt ad voluptatibus,
+                velit consectetur, necessitatibus enim culpa? Vero laboriosam
+                laudantium perferendis eaque maiores velit qui veritatis omnis
+                corporis et, modi hic praesentium iusto eum dicta aliquam,
+                soluta delectus non nihil quia eveniet ipsum. Explicabo, qui
+                hic.
+            </div>
+        </div>
+    </body>
+
+    <script>
+        //animate on preload
+        window.addEventListener("load", function () {
+            var preloader = document.getElementById("preloader");
+            const content = document.querySelector(".content");
+            const fadeAllWrapper = document.querySelector(".fadeAllWrapper");
+            setTimeout(function () {
+                preloader.style.animationPlayState = "running";
+                content.style.animationPlayState = "running";
+                fadeAllWrapper.style.animationPlayState = "running";
+
+                setTimeout(() => {
+                    preloader.style.display = "none";
+                }, 1000);
+            }, 0); // milliseconds before preloader finish
+        });
+        //end
+    </script>
+</html>
