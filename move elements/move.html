@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Element</title>
+
+
+
+    <style>
+        body {
+            height: 90vh;
+            width: 100vw;
+            background-color: cadetblue;
+        }
+
+        #element-to-move {
+            position: absolute;
+            right: 0;
+        }
+
+        #target-container {
+            background-color: aqua;
+            position: relative;
+            width: 70vw;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="element-to-move">Element to Move</div>
+
+
+    <div id="target-container">
+        <p>Target Container</p>
+    </div>
+    <button id="move-button">Move Element</button>
+
+    <script>
+        const elementToMove = document.getElementById("element-to-move");
+        const targetContainer = document.getElementById("target-container");
+        const moveButton = document.getElementById("move-button");
+
+        moveButton.addEventListener("click", function () {
+            targetContainer.appendChild(elementToMove);
+        });
+
+
+
+        // const elementToMove = document.getElementById("element-to-move");
+        // const targetContainer = document.getElementById("target-container");
+
+        function moveElement() {
+            targetContainer.appendChild(elementToMove);
+        }
+
+        if (window.matchMedia("(max-width: 830px)").matches) {
+            moveElement();
+        }
+
+        window.addEventListener("resize", function () {
+            if (window.matchMedia("(max-width: 830px)").matches) {
+                moveElement();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

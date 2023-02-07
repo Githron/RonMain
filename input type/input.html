@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Input</title>
+
+    <style>
+        body {
+            height: 100vh;
+            align-items: center;
+            display: flex;
+        }
+
+        form {
+            margin: auto;
+            transform: scale(1.2);
+        }
+
+        input {
+            /* border-color: aqua; */
+            border: solid rgb(119, 119, 119);
+            padding: 10px;
+        }
+
+        input::placeholder {
+            color: rgb(125, 12, 255);
+            font-size: 16px;
+            font-family: Arial;
+        }
+
+        .inpX {
+            padding-left: 20px;
+            border-radius: 20px;
+        }
+
+        input:focus {
+            color: red;
+            border: solid rgb(154, 69, 219);
+            outline: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <form>
+
+
+        <input class=" inpX" type="text" placeholder="Enter your name"><br><br>
+
+
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br><br>
+
+        <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+        <label for="newsletter">Subscribe to newsletter</label><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+
+</body>
+
+</html>
