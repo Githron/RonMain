@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Toggle</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+
+
+        /* toggle starts */
+        .switch {
+
+            width: 60px;
+            height: 34px;
+            vertical-align: middle;
+            position: relative;
+            display: inline-block;
+            /* margin-left: 80%; */
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: red;
+            transition: .4s;
+            border-radius: 34px;
+            border: 1px solid red;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            width: 26px;
+            height: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: black;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: lightblue;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        /* toggle ends */
+    </style>
+</head>
+
+<body>
+
+    <h1>Toggle switch</h1>
+
+    <p>
+        <!-- toggle here -->
+        <label class="switch">
+            <input type="checkbox" id="checkbox">
+
+            <span class="slider round"></span>
+        </label>
+        Lorem ipsum dolor sit amet.
+    </p>
+    <!-- toggle end -->
+
+
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <script>
+
+
+        // $(document).ready(function () {
+        //     $("input#checkbox").prop("checked", false); //initial state every refresh
+        //     $('input#checkbox').click(function () {
+        //         if ($(this).is(':checked')) {
+        //             $('h1').css('color', 'lightblue');
+        //         } else {
+        //             $('h1').css('color', 'red');
+        //         }
+        //     });
+        // });
+
+
+
+        // maintain the state of the CSS of the checkbox after a page refresh
+        $(document).ready(function () {
+            var checkboxState = localStorage.getItem("checkboxState");
+
+            if (checkboxState === "checked") {
+                $('input#checkbox').prop("checked", true);
+                $('h1').css('color', 'lightblue');
+            } else {
+                $('input#checkbox').prop("checked", false);
+                $('h1').css('color', 'red');
+            }
+
+            $('input#checkbox').click(function () {
+                if ($(this).is(':checked')) {
+                    $('h1').css('color', 'lightblue');
+                    localStorage.setItem("checkboxState", "checked");
+                } else {
+                    $('h1').css('color', 'red');
+                    localStorage.setItem("checkboxState", "unchecked");
+                }
+            });
+        });
+
+
+    </script>
+</body>
+
+
+
+</html>
