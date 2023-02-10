@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#submitBtn').click(function () {
+                if ($.trim($('input[name="inputName"]').val()).length == 0) {
+                    // alert('Input field is empty!'); // do something
+                } else {
+                    // alert('Input field is not empty.'); // do something
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <input type="text" name="inputName">
+    <button id="submitBtn">Submit</button>
+</body>
+
+</html>

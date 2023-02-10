@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>jQuery Check If Input Field is Empty</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
+
+
+
+
+
+    <style>
+        .empty {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" name="name" placeholder="Name:">
+        <input id="test1" type="submit">
+    </form>
+
+
+
+
+    <script>
+        $('#test1').submit(function () {
+            if (!$("#form input[type=text]").val()) {
+                $("#form input[type=text]").addClass("empty");
+                return false;
+            }
+        });
+    </script>
+</body>
+
+</html>

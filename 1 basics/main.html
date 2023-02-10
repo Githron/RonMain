@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+<body>
+    <p>
+        To change the value of a span element with a specific ID using jQuery, you can use the following code:
+
+        javascript
+        Copy code
+        $("#spanID").text("new value");
+        In this example, "#spanID" is the selector for the span element with the ID of "spanID", and .text("new value")
+        sets
+        the text content of the selected element to the string "new value".
+    </p>
+
+    <h3>test</h3>
+
+    <p>
+        In this code, when the #arcade button is clicked, the value of the .arcadePrice element is stored in the
+        selectedPrice variable. Depending on the value of selectedPrice, different actions will be executed. If the
+        value of selectedPrice is "$90/yr", the first if statement will be executed. If the value of selectedPrice is
+        "$70/yr", the second else if statement will be executed. If the value of selectedPrice is "$50/yr", the third
+        else if statement will be executed. If none of the conditions are met, the code inside the else statement will
+        be executed.
+    </p>
+
+    <div>
+
+
+        <div>
+            // Store the value in a cookie in index.html
+            $(document).ready(function () {
+            $("#arcade").click(function () {
+            var selectedPrice = $(".arcadePrice").text();
+            document.cookie = "selectedPrice=" + selectedPrice;
+            });
+            });
+
+            // Retrieve the value from the cookie in index2.html
+            $(document).ready(function () {
+            var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)selectedPrice\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+            if (cookieValue) {
+            // Do something with the value
+            }
+            });
+
+        </div>
+
+        <p>
+            In this code, when the #arcade button is clicked on index.html, the value of the .arcadePrice element is
+            stored in the selectedPrice variable, which is then saved in a cookie using document.cookie. On index2.html,
+            the value of the selectedPrice cookie is retrieved using document.cookie.replace and stored in the
+            cookieValue variable. If cookieValue has a value, you can perform some action with it.
+        </p>
+
+
+
+        <p>
+            Can You Add Numbers With Letters In JavaScript?
+
+
+            Romelo Lacida
+            Can you add numbers with letters with javascript?
+
+            No, JavaScript cannot directly add numbers with letters. JavaScript is a dynamically typed language and
+            treats letters as strings, not numbers. If you try to add a number and a string, JavaScript will treat the
+            entire expression as a string and concatenate them, rather than performing mathematical addition.
+
+            If you need to perform arithmetic operations with values that are stored as strings, you will need to
+            convert the strings to numbers first using functions such as parseInt() or parseFloat(). For example:
+
+            javascript
+            Copy code
+            let num1 = "10";
+            let num2 = "20";
+            let result = parseInt(num1) + parseInt(num2);
+            console.log(result); // 30
+        </p>
+        <script>
+            let num1 = "10";
+            let num2 = "20";
+            let result = parseInt(num1) + parseInt(num2);
+            console.log(result); // 30
+
+            // jQuery
+            $(document).ready(function () {
+                let num1 = "10";
+                let num2 = "20";
+                let result = parseInt(num1) + parseInt(num2);
+                console.log(result); // 30
+            });
+
+            $(document).ready(function () {
+                let text = $('#myParagraph').text();
+                console.log(text);
+            });
+
+
+
+        </script>
+
+    </div>
+
+
+
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <script>
+        $(document).ready(function () {
+            $("p").click(function () {
+                $("p").text("new value"); // add new value to the elements text
+            });
+
+
+        });
+
+        var selectedPrice;
+
+        $(document).ready(function () {
+            $("h3").click(function () {
+                selectedPrice = $("h3").text();
+                console.log(selectedPrice);
+            });
+        });
+
+
+
+        $(document).ready(function () {
+            $("#arcade").click(function () {
+                var selectedPrice = $(".arcadePrice").text();
+                if (selectedPrice === "$90/yr") {
+                    // do something
+                } else if (selectedPrice === "$70/yr") {
+                    // do something else
+                } else if (selectedPrice === "$50/yr") {
+                    // do another thing
+                } else {
+                    // do something else if none of the above conditions are met
+                }
+            });
+        });
+
+
+
+
+
+        // Here's an example of how you can store the value of selectedPrice in local storage when the button is clicked in index.html:
+        $(document).ready(function () {
+            $("#arcade").click(function () {
+                var selectedPrice = $(".arcadePrice").text();
+                localStorage.setItem("selectedPrice", selectedPrice);
+            });
+        });
+
+        // And here's an example of how you can retrieve the value of selectedPrice from local storage in index2.html
+        $(document).ready(function () {
+            var selectedPrice = localStorage.getItem("selectedPrice");
+            // do something with the value of selectedPrice
+        });
+
+
+
+
+        // store a value in local storage
+        localStorage.setItem("selectedPrice", "90");
+
+        // retrieve a value from local storage
+        var selectedPrice = localStorage.getItem("selectedPrice");
+        console.log(selectedPrice); // logs "90"
+
+
+        // In this example, the code inside the if statement will be executed if either selectedPrice is equal to "$90/yr" or "$100/yr".
+        if (selectedPrice === "$90/yr" || selectedPrice === "$100/yr") {
+            // do something
+        }
+
+
+        // In this example, the code inside the inner if statement will be executed only if selectedPrice is equal to "$90/yr" and checkboxState is equal to "checked".
+        if (selectedPrice === "$90/yr") {
+            if (checkboxState === "checked") {
+                // do something
+            }
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <script>
+        // Wait for the document to be ready
+        $(document).ready(function () {
+            // Get the value of the checkbox state from local storage
+            var checkboxState = localStorage.getItem("checkboxState");
+
+            // Extract the numeric value from the text of the elements with IDs #p3Index4, #p5Index4, #p6Index4, and #p7Index4
+            var num0 = $("#p3Index4").text().match(/\d+/);
+            var num1 = $("#p5Index4").text().match(/\d+/);
+            var num2 = $("#p6Index4").text().match(/\d+/);
+            var num3 = $("#p7Index4").text().match(/\d+/);
+
+            // Add the extracted numeric values and store the result in totalResult
+            var totalResult =
+                (num0 ? parseInt(num0[0]) : 0) +
+                (num1 ? parseInt(num1[0]) : 0) +
+                (num2 ? parseInt(num2[0]) : 0) +
+                (num3 ? parseInt(num3[0]) : 0);
+
+            // Log the total result to the console for debugging purposes
+            console.log(totalResult);
+
+            // Set the text of the element with class .totalNumber to the total result with either "/yr" or "/mo" depending on checkboxState
+            if (checkboxState === "checked") {
+                $(".totalNumber").text("+$" + totalResult + "/yr");
+            } else {
+                $(".totalNumber").text("+$" + totalResult + "/mo");
+            }
+        });
+
+    </script>
+</body>
+
+</html>
