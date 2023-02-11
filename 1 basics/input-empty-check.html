@@ -18,6 +18,180 @@
 <body>
     <input type="text" name="inputName">
     <button id="submitBtn">Submit</button>
+
+
+
+
+
+
+    <div class="detectLosesFocus">
+        <h3>Here's the code with comments explaining what each line does:</h3>
+        <p>
+            The code uses jQuery's .on() method to bind the blur event to the input element. This means that when the
+            input loses focus (the user clicks outside of it or tabs away from it), the function inside the .on() method
+            will be executed.
+
+            The function first gets the value of the input using $(this).val(). The $(this) part refers to the input
+            element, and .val() gets its value.
+
+            Next, the code checks the format of the input value using regular expressions. If the input value matches
+            the format of a name (only contains letters), an email address, or a phone number (10 digits), the
+            appropriate message is logged to the console. If the input value doesn't match any of these formats, a
+            message saying that the format is unknown is logged.
+        </p>
+    </div>
+    <script>
+        $(document).ready(function () {
+            // Select the input element and bind the blur event to it
+            $("input").on("blur", function () {
+                // Get the value of the input
+                var inputValue = $(this).val();
+                // Check if the input value matches the format of a name
+                if (/^[a-zA-Z ]+$/.test(inputValue)) {
+                    console.log("Input is a name.");
+                }
+                // Check if the input value matches the format of an email address
+                else if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(inputValue)) {
+                    console.log("Input is an email address.");
+                }
+                // Check if the input value matches the format of a phone number
+                else if (/^[0-9]{10}$/.test(inputValue)) {
+                    console.log("Input is a phone number.");
+                }
+                // If the input value doesn't match any of the formats
+                else {
+                    console.log("Input is of unknown format.");
+                }
+            });
+        });
+
+    </script>
+
+
+
+
+    <div class="checkEach">
+        <h3>Here's a code sample to check the input on each ID using jQuery:</h3>
+        <p>This code uses the blur event to detect when the focus is removed from an input. When the focus is removed,
+            the code will check if the value of the input is not empty and if it's in a valid format for the email and
+            phone number inputs. If the input is empty or in an invalid format, the corresponding error message will be
+            displayed. If the input is not empty and in a valid format, the error message will be hidden.</p>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("input").on("blur", function () {
+                // Check if the name input is not empty
+                if ($("#name").val().trim() === "" || !isValidName($("#name").val().trim())) {
+                    $(".nCheckEmpty").show();
+                } else {
+                    $(".nCheckEmpty").hide();
+                }
+
+                // Check if the email input is not empty and if it's a valid email format
+                if ($("#email").val().trim() === "" || !isValidEmail($("#email").val().trim())) {
+                    $(".eaCheckEmpty").show();
+                } else {
+                    $(".eaCheckEmpty").hide();
+                }
+
+                // Check if the phone number input is not empty and if it's a valid phone number format
+                if ($("#number").val().trim() === "" || !isValidPhoneNumber($("#number").val().trim())) {
+                    $(".pnCheckEmpty").show();
+                } else {
+                    $(".pnCheckEmpty").hide();
+                }
+            });
+        });
+
+        function isValidName(name) {
+                // your name validation code here
+                var pattern = /^[a-zA-Z ]+$/;
+                return pattern.test(name);
+            }
+
+        // Function to check if the email is in a valid format
+        function isValidEmail(email) {
+            var pattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            return pattern.test(email);
+        }
+
+        // Function to check if the phone number is in a valid format
+        function isValidPhoneNumber(phoneNumber) {
+            var pattern = /^\+?[0-9]+$/;
+            return pattern.test(phoneNumber);
+        }
+
+    </script>
+
+
+
+    <div class="sample">
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            // hide all the error messages initially
+            // $(".nCheckEmpty").hide();
+            // $(".eaCheckEmpty").hide();
+            // $(".pnCheckEmpty").hide();
+
+            $("#stepTo2").click(function () {
+                // check if the name field is not empty
+                if ($("#name").val() === "") {
+                    $(".nCheckEmpty").show();
+                    return false;
+                } else {
+                    $(".nCheckEmpty").hide();
+                }
+
+                // check if the name field is not empty and if the value is a valid name
+                if ($("#name").val() === "" || !isValidName($("#name").val())) {
+                    $(".nCheckEmpty").show();
+                    return false;
+                } else {
+                    $(".nCheckEmpty").hide();
+                }
+
+                // check if the email field is not empty and if the value is a valid email
+                if ($("#email").val() === "" || !isValidEmailAddress($("#email").val())) {
+                    $(".eaCheckEmpty").show();
+                    return false;
+                } else {
+                    $(".eaCheckEmpty").hide();
+                }
+
+                // check if the phone number field is not empty and if the value is a valid phone number
+                if ($("#number").val() === "" || !isValidPhoneNumber($("#number").val())) {
+                    $(".pnCheckEmpty").show();
+                    return false;
+                } else {
+                    $(".pnCheckEmpty").hide();
+                }
+
+                // if all the fields are valid, then submit the form or do your desired action here
+                // ...
+            });
+
+            function isValidName(name) {
+                // your name validation code here
+                var pattern = /^[a-zA-Z ]+$/;
+                return pattern.test(name);
+            }
+
+            function isValidEmailAddress(emailAddress) {
+                // your email validation code here
+                var pattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+                return pattern.test(email);
+            }
+
+            function isValidPhoneNumber(phoneNumber) {
+                // your phone number validation code here
+                var pattern = /^\+?[0-9]+$/;
+                return pattern.test(phoneNumber);
+            }
+        });
+    </script>
+
 </body>
 
 </html>
