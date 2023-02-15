@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON("data.json", function (data) {
+                $("#currentUserImage").attr("src", data.currentUser.image.png);
+                $("#currentUsername").text(data.currentUser.username);
+
+                var commentsHTML = "";
+                $.each(data.comments, function (index, comment) {
+                    commentsHTML += "<div>";
+                    commentsHTML += "<img src='" + comment.user.image.png + "'>";
+                    commentsHTML += "<h3>" + comment.user.username + "</h3>";
+                    commentsHTML += "<p>" + comment.content + "</p>";
+                    commentsHTML += "</div>";
+                });
+                $("#comments").html(commentsHTML);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="currentUser">
+        <img id="currentUserImage">
+        <h2 id="currentUsername"></h2>
+    </div>
+    <h1>Comments</h1>
+    <div id="comments"></div>
+</body>
+
+</html>

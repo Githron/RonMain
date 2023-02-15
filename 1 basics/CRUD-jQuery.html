@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery CRUD Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h1>jQuery CRUD Example</h1>
+    <div id="result"></div>
+    <button id="createBtn">Create</button>
+    <button id="readBtn">Read</button>
+    <button id="updateBtn">Update</button>
+    <button id="deleteBtn">Delete</button>
+
+    <p>
+        In this example, we've included the jQuery library at the top of the page. The CRUD operations are performed in
+        a similar manner as in the previous example, but using jQuery instead of plain JavaScript. The event listeners
+        are attached to the buttons using the click method and the results are displayed in the div using the html
+        method.
+    </p>
+
+    <script>
+        $(document).ready(function () {
+            $("#createBtn").click(function () {
+                const object = { name: "John", age: 30 };
+                const jsonString = JSON.stringify(object);
+                $("#result").html(jsonString);
+            });
+
+            $("#readBtn").click(function () {
+                const jsonString = '{"name":"John", "age":30}';
+                const object = JSON.parse(jsonString);
+                $("#result").html(JSON.stringify(object));
+            });
+
+            $("#updateBtn").click(function () {
+                const jsonString = '{"name":"John", "age":30}';
+                const object = JSON.parse(jsonString);
+                object.age = 31;
+                const updatedJsonString = JSON.stringify(object);
+                $("#result").html(updatedJsonString);
+            });
+
+            $("#deleteBtn").click(function () {
+                const jsonString = '{"name":"John", "age":30}';
+                const object = JSON.parse(jsonString);
+                delete object.age;
+                const updatedJsonString = JSON.stringify(object);
+                $("#result").html(updatedJsonString);
+            });
+        });
+    </script>
+</body>
+
+</html>

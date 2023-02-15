@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript CRUD Example</title>
+</head>
+
+<body>
+    <h1>JavaScript CRUD Example</h1>
+    <div id="result"></div>
+    <button id="createBtn">Create</button>
+    <button id="readBtn">Read</button>
+    <button id="updateBtn">Update</button>
+    <button id="deleteBtn">Delete</button>
+
+    <script>
+        const result = document.getElementById("result");
+
+        document.getElementById("createBtn").addEventListener("click", function () {
+            const object = { name: "John", age: 30 };
+            const jsonString = JSON.stringify(object);
+            result.innerHTML = jsonString;
+        });
+
+        document.getElementById("readBtn").addEventListener("click", function () {
+            const jsonString = '{"name":"John", "age":30}';
+            const object = JSON.parse(jsonString);
+            result.innerHTML = JSON.stringify(object);
+        });
+
+        document.getElementById("updateBtn").addEventListener("click", function () {
+            const jsonString = '{"name":"John", "age":30}';
+            const object = JSON.parse(jsonString);
+            object.age = 31;
+            const updatedJsonString = JSON.stringify(object);
+            result.innerHTML = updatedJsonString;
+        });
+
+        document.getElementById("deleteBtn").addEventListener("click", function () {
+            const jsonString = '{"name":"John", "age":30}';
+            const object = JSON.parse(jsonString);
+            delete object.age;
+            const updatedJsonString = JSON.stringify(object);
+            result.innerHTML = updatedJsonString;
+        });
+    </script>
+</body>
+
+</html>
