@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML Preview with JavaScript</title>
+    <style>
+        /* Style the preview container */
+        body {
+            text-align: center;
+            margin: 0;
+            margin: auto;
+            padding: 0;
+        }
+
+        #preview {
+            margin: auto;
+            width: 95%;
+            background-color: #f5f5f5;
+            padding: 10px;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+
+        #editor {
+            width: 95%;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HTML Preview with JavaScript</h1>
+    <div>
+        <h2>Code Editor</h2>
+        <textarea id="editor" oninput="updatePreview()">
+
+
+
+        </textarea>
+        <button onclick="resetEditor()">Reset</button>
+        <button onclick="runCode()">Run</button>
+    </div>
+    <div>
+        <h2>Preview</h2>
+        <div id="preview"></div>
+    </div>
+    <script>
+        // Get references to the editor and preview elements
+        const editor = document.getElementById('editor');
+        const preview = document.getElementById('preview');
+
+        // Update the preview whenever the editor changes
+        function updatePreview() {
+            preview.innerHTML = editor.value;
+        }
+
+        // Reset the editor and preview
+        function resetEditor() {
+            editor.value = '';
+            preview.innerHTML = '';
+        }
+
+        // Run the code in the editor and display the output in the preview
+        function runCode() {
+            try {
+                // Clear the preview
+                preview.innerHTML = '';
+
+                // Parse the editor contents to determine the type of code
+                const code = editor.value.trim();
+                if (code.startsWith('<')) {
+                    // HTML code
+                    preview.innerHTML = code;
+                } else if (code.startsWith('{')) {
+                    // CSS code
+                    const style = document.createElement('style');
+                    style.textContent = code;
+                    preview.appendChild(style);
+                } else {
+                    // JavaScript code
+                    const outputEl = document.createElement("pre");
+
+                    // Capture console.log output
+                    const consoleLog = [];
+                    const originalConsoleLog = console.log;
+                    console.log = function () {
+                        consoleLog.push(Array.from(arguments));
+                        originalConsoleLog.apply(console, arguments);
+                    };
+
+                    eval(`(function() {${code}})();`);
+
+                    // Restore console.log
+                    console.log = originalConsoleLog;
+
+                    // Display console.log output in preview
+                    if (consoleLog.length > 0) {
+                        outputEl.innerHTML = consoleLog.map(args => args.join(" ")).join("\n");
+                        preview.appendChild(outputEl);
+                    }
+                }
+            } catch (error) {
+                preview.innerHTML = `<pre style="color: red">${error}</pre>`;
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>
