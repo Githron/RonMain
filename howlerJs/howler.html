@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>howler Js</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        button {
+            height: 70px;
+            width: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js'
+        integrity='sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=='
+        crossorigin='anonymous' referrerpolicy='no-referrer'></script>
+
+
+
+
+    <button id="start-quiz">play</button>
+    <button id="start-again">stop fadingOut</button>
+
+
+    <script>
+
+        //soumd effects
+        var sfx = {
+            quizMusic: new Howl({
+                src: ["quiz-music.mp3"],
+                loop: true,
+                onend: function () {
+                    console.log("done playing music");
+                },
+            }),
+
+            correct: new Howl({
+                src: ["correct.mp3"],
+                loop: false,
+                onend: function () {
+                    console.log("correct");
+                },
+            }),
+
+            wrong: new Howl({
+                src: ["wrong.mp3"],
+                loop: false,
+                onend: function () {
+                    console.log("wrong");
+                },
+            }),
+
+            wow: new Howl({
+                src: ["anime wow.mp3"],
+                loop: false,
+                onend: function () {
+                    console.log("wow");
+                },
+            }),
+        };
+
+        start_quiz_btn = document.querySelector("#start-quiz");
+
+        // Add a click event listener to the "Start Quiz" button that will call the quizQuestion function when clicked
+        start_quiz_btn.addEventListener("click", () => {
+            // sfx.quizMusic.volume(1);
+            // sfx.quizMusic.play();
+            if (sfx.quizMusic.playing()) {
+            } else {
+                // sfx.quizMusic.volume(1); // set volume to 50%
+                sfx.quizMusic.play();
+            }
+        });
+
+
+        document.querySelector("#start-again").addEventListener("click", () => {
+            sfx.quizMusic.fade(1, 0, 2000);
+            console.log("music stop");
+
+            setTimeout(function () {
+                sfx.quizMusic.stop();
+                sfx.quizMusic.volume(1);
+            }, 2000); // wait for 2 seconds (same duration as the fade effect)
+        });
+    </script>
+</body>
+
+</html>
