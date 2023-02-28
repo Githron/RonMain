@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for loops and iteration</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .array1 {
+            width: 33vw;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="array1">
+
+    </div>
+
+    <div class="myArray2">
+        <button id="next-btn">Next array2</button>
+        <p id="result"></p>
+    </div>
+
+    <div class="myArray3">
+        <button id="next-btn3">Next array3</button>
+        <p id="result3"></p>
+    </div>
+
+    <script>
+        let quiz_rules = [
+            "You Have Only 20 Seconds For Each Question.",
+            "Once You Select Any Answer.It Can't Be Undone",
+            "You'll Get Points On The Basic Of Your Correct Answers.",
+        ];
+
+        let q = 0;
+
+        for (let step = 0; step < 5; step++) {
+            console.log(step);
+            console.log(quiz_rules[q + 1]);
+            q++;
+        };
+
+        let myArray = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
+
+        // Using a for loop to iterate over the array
+        for (let i = 0; i < myArray.length; i++) {
+            console.log('The element at index ' + i + ' is: ' + myArray[i]);
+        }
+
+        window.onload = () => {
+            let myArray = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
+            // Iterate over the myArray array and add each element as a paragraph to the div element
+            const arrayDiv = document.querySelector(".array1");
+            myArray.forEach((elem) => {
+                arrayDiv.innerHTML += `<p>${elem}</p>`;
+            });
+        };
+
+
+
+
+
+        // sample x
+        let myArray2 = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
+        let currentIndex = 0;
+
+        // Get references to the button and result elements
+        const nextButton = document.querySelector('#next-btn');
+        const resultElement = document.querySelector('#result');
+
+        // Add a click event listener to the button
+        nextButton.addEventListener('click', () => {
+            // Display the current element
+            resultElement.textContent = myArray2[currentIndex];
+
+            // Move to the next element (or wrap around to the beginning if at the end)
+            currentIndex = (currentIndex + 1) % myArray2.length;
+        });
+
+        //If currentIndex is 0, the expression will evaluate to 1, which is the index of the next element in the array.
+        //If currentIndex is 1, the expression will evaluate to 2, and so on.
+        //When currentIndex is equal to the length of the array minus 1
+        //(i.e. ,the index of the last element in the array),
+        //the expression will evaluate to 0, effectively wrapping around to the beginning of the array.
+        //So, using the modulus operator in this way is a convenient way to cycle through an array in a circular manner, without going out of bounds.
+
+
+
+        //stops at last index
+        let myArray3 = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
+        let currentIndex3 = 0;
+
+        // Get references to the button and result elements
+        const nextButton3 = document.querySelector('#next-btn3');
+        const resultElement3 = document.querySelector('#result3');
+
+        // Add a click event listener to the button
+        nextButton3.addEventListener('click', () => {
+            // Display the current element
+            resultElement3.textContent = myArray3[currentIndex3];
+
+            // Move to the next element (or stop at the last index)
+            if (currentIndex3 < myArray3.length - 1) {
+                currentIndex3++;
+            }
+        });
+
+
+
+
+
+    </script>
+</body>
+
+</html>
