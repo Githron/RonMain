@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Preload Animation Example</title>
+  <style>
+    /* Define the styles for the animated element */
+    #my-element {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: all 1s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Add the element you want to animate -->
+  <div id="my-element"></div>
+
+  <!-- Preload any resources you need -->
+  <script>
+    // Define the image or other resources you want to preload
+    const img = new Image();
+    img.src = "image-moon.png";
+
+    // Define your animation function
+    function animate() {
+      const element = document.getElementById("my-element");
+      element.style.left = "200px";
+      element.style.backgroundColor = "red";
+    }
+
+    // Trigger the animation function after all resources have loaded
+    window.onload = function() {
+      animate();
+    };
+  </script>
+</body>
+</html>

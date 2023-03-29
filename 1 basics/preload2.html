@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preloader</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: black;
+
+            /* fix height */
+            height: 100vh;
+            /* Use vh as a fallback for browsers that do not support Custom Properties */
+            height: calc(var(--vh, 1vh) * 100);
+        }
+
+        /* Add some style to the preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 99999;
+            background-color: rgb(0, 0, 0);
+            color: gray;
+            animation: fadeOut 1s ease-in-out;
+            animation-fill-mode: forwards;
+            animation-play-state: paused;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        #preloader .loading {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font: 14px arial;
+        }
+
+        #preloader img {
+            width: 100%;
+        }
+
+        /* after preloader fade in whole content */
+        .content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+
+            animation: fadeIn 1s ease-in-out;
+            animation-fill-mode: forwards;
+            animation-play-state: paused;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        img {
+            width: 300px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div id="preloader">
+        <div class="loading">
+            <img id="myGif" src="preloader.gif" alt="">
+        </div>
+    </div>
+
+    <div class="content">
+        <img src="image-moon.png" alt="">
+    </div>
+
+
+    <script>
+        //animate on preload
+        window.addEventListener("load", function () {
+            var preloader = document.getElementById("preloader");
+            const content = document.querySelector(".content");
+            setTimeout(function () {
+                preloader.style.animationPlayState = "running";
+                content.style.animationPlayState = "running";
+                setTimeout(() => {
+                    preloader.style.display = "none";
+                }, 1000);
+            }, 0); // milliseconds
+        });
+        //end
+
+        // <!-- fix height -->
+        // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+        let vh = window.innerHeight * 0.01;
+        // Then we set the value in the --vh custom property to the root of the document
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+        // We listen to the resize event
+        window.addEventListener('resize', () => {
+            // We execute the same script as before
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        });
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
