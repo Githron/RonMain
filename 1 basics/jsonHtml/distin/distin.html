@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Space Travel Destinations</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var data;
+            var index = 0;
+
+            $.getJSON("destinations.json", function (json) {
+                data = json.destinations;
+                displayData();
+            });
+
+            $("#nextButton").click(function () {
+                index = (index + 1) % data.length;
+                displayData();
+            });
+
+            $("#moonButton").click(function () {
+                index = data.findIndex(obj => obj.name === 'Moon');
+                displayData();
+            });
+
+            $("#marsButton").click(function () {
+                index = data.findIndex(obj => obj.name === 'Mars');
+                displayData();
+            });
+
+            $("#europaButton").click(function () {
+                index = data.findIndex(obj => obj.name === 'Europa');
+                displayData();
+            });
+
+            $("#titanButton").click(function () {
+                index = data.findIndex(obj => obj.name === 'Titan');
+                displayData();
+            });
+
+            function displayData() {
+                var obj = data[index];
+                var html = `
+                    <h2>${obj.name}</h2>
+                    <img src="${obj.images.png}" srcset="${obj.images.webp}" alt="${obj.name} alt ">
+                    <p>${obj.description}</p>
+                    <p>Distance: ${obj.distance}</p>
+                    <p>Travel Time: ${obj.travel}</p>
+                    `;
+                $("#dataDisplay").html(html);
+            }
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="dataDisplay"></div>
+    <button id="nextButton">Next Destination</button>
+
+    <button id="moonButton">moon Destination</button>
+    <button id="marsButton">mars Destination</button>
+    <button id="europaButton">europa Destination</button>
+    <button id="titanButton">titan Destination</button>
+</body>
+
+</html>
