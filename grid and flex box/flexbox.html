@@ -125,30 +125,43 @@
       ">100px</div>
 	</div>
 
-	<div style="
-      margin-top: 30px;
-      height: 70px;
-      border-width: 1px;
-      border-style: solid;
-      border-color: gray;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-    ">
-		<div style="
-        background-color: lightblue;
-        width: 100px;
-      ">100px</div>
-		<div style="
-        background-color: lightpink;
-        width: 100px;
-      ">100px</div>
-		<div style="
-        background-color: lightblue;
-        width: 100px;
-      ">100px</div>
+	<br><br><br> last
+	<style>
+		#lastDiv {
+			margin-top: 30px;
+			border: 1px solid gray;
+
+			height: 700px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		#div1 {
+			background-color: lightblue;
+			width: 100px;
+			flex: 1;
+		}
+
+		#div2 {
+			background-color: lightpink;
+			width: 100px;
+			flex: 1;
+		}
+
+		#div3 {
+			background-color: lightblue;
+			width: 100px;
+			flex: 1;
+		}
+	</style>
+
+	<div id="lastDiv">
+		<div id="div1">100px</div>
+		<div id="div2">100px</div>
+		<div id="div3">100px</div>
 	</div>
 </body>
 
