@@ -24,6 +24,13 @@
                 displayData();
             });
 
+            // when button is render using javascript iside template literals
+            $(document).on("click", "#moonButton", function () {
+			index = data.findIndex(obj => obj.name === 'Mark Shuttleworth');
+			displayData();
+		    });
+
+
             $("#marsButton").click(function () {
                 index = data.findIndex(obj => obj.name === 'Mars');
                 displayData();
